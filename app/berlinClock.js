@@ -14,7 +14,9 @@ class berlinClock {
         return result;
     }
      convertSeconds(input) {
-        return input;
+        if (input % 2 === 0)
+            return 'Y';
+        return 'O';
     }
     
      convertMinutes(input) {
