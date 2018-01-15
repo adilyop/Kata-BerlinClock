@@ -10,7 +10,7 @@ class berlinClock {
         const seconds = this.convertSeconds(clockTab[2]);
         const minutes = this.convertMinutes(clockTab[1]);
         const hours = this.convertHours(clockTab[0]);
-        const result = seconds  + '\n' +  hours + '\n' + minutes;
+        const result = seconds + '\n' + hours + '\n' + minutes;
         return result;
     }
      convertSeconds(input) {
@@ -24,7 +24,10 @@ class berlinClock {
     }
     
      convertHours(input) {
-        return input;
+        let firstLine = Math.floor(input / 5);
+        let secondLine = input % 5;
+        return 'R'.repeat(firstLine) + 'O'.repeat(4 - firstLine) + 
+        '\n' + 'R'.repeat(secondLine) + 'O'.repeat(4 - secondLine);
     }
 }
 
