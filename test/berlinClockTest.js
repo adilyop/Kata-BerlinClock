@@ -1,22 +1,25 @@
-
 const chai = require('chai');
 const sinon = require('sinon')
 const expect = chai.expect;
 const BerlinClock = require('../app/berlinClock');
+const Hour = require('../app/hour');
+const Minute = require('../app/minute');
+const Second = require('../app/second');
 
 describe('BerlinClock Kata Test: \n', () => {
     it('should return true', () => {
         var berlinClock = new BerlinClock('00:00:00');
-        berlinClock.convertMinutes = sinon.stub();
-        berlinClock.convertMinutes.withArgs('00').returns('OOOOOOOOOOO\nOOOO');
+        var hour = new Hour('00');
+        var minute = new Minute('00');
+        sinon.stub(Second.prototype, 'convertSeconds').callsFake(() => {
+            return 'Y'
+        })
+        sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
+            return 'OOOOOOOOOOO\nOOOO'
+        })
+        sinon.stub(Hour.prototype, 'convertHours').callsFake(() => {
+            return 'OOOO\nOOOO'
+        })
         expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
-    });
-
-    it('should return value when input is 13:17:01', () => {
-        var berlinClock = new BerlinClock('13:17:01');
-        berlinClock.convertMinutes = sinon.stub();
-        berlinClock.convertMinutes.withArgs('17').returns('YYROOOOOOOO\nYYOO');
-        expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
-        );
     });
 });
