@@ -50,4 +50,30 @@ describe('BerlinClock Kata Test: \n', () => {
         })
         expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
     });
+    it('should return valid clock when input is  13:17:01 - use minute/hour mock', () => {
+        var berlinClock = new BerlinClock('13:17:01');
+        sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
+            return 'YYROOOOOOOO\nYYOO'
+        })
+        sinon.stub(Hour.prototype, 'convertHours').callsFake(() => {
+            return 'RROO\nRRRO'
+        })
+        expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
+        );
+    });
+    it('should return valid clock when input is 00:00:00 - use minute mock', () => {
+        var berlinClock = new BerlinClock('00:00:00');
+        saveMinute = sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
+            return 'OOOOOOOOOOO\nOOOO'
+        })
+        expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
+    }); 
+    it('should return valid clock when input is  13:17:01 - use minute mock', () => {
+        var berlinClock = new BerlinClock('13:17:01');
+        sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
+            return 'YYROOOOOOOO\nYYOO'
+        })
+        expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
+        );
+    });
 });
