@@ -15,4 +15,9 @@ describe('hour converter Test: \n', () => {
         expect(result[0]).to.equal('RROO');
         expect(result[1]).to.equal('RRRO');
     });
+    it('should return error when input is invalid', () => {
+        let hourConverter = new HourConverter('invalid');
+        const result = hourConverter.convertHours()
+        expect(result).to.equal('invalid hour format');
+    });
 });

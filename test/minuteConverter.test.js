@@ -15,4 +15,9 @@ describe('minute converter Test: \n', () => {
         expect(result[0]).to.equal('YYROOOOOOOO');
         expect(result[1]).to.equal('YYOO');
     });
+    it('should return error when input is invalid', () => {
+        let minuteConverter = new MinuteConverter('invalid');
+        const result = minuteConverter.convertMinutes()
+        expect(result).to.equal('invalid minute format');
+    });
 });
