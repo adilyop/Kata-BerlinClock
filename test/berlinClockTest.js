@@ -92,4 +92,12 @@ describe('BerlinClock Kata Test: \n', () => {
         var hour = new Hour('13');
         expect(hour.convertHours()).to.equal('RROO\nRRRO');
     });
+    it('should return valid minute when input is 00', () => {
+        var minute = new Minute('00');
+        expect(minute.convertMinutes()).to.equal('OOOOOOOOOOO\nOOOO');
+    });
+    it('should return valid minute when input is 17', () => {
+        var minute = new Minute('17');
+        expect(minute.convertMinutes()).to.equal('YYROOOOOOOO\nYYOO');
+    });
 });
