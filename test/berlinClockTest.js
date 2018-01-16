@@ -76,4 +76,12 @@ describe('BerlinClock Kata Test: \n', () => {
         expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
         );
     });
+    it('should return valid second when input is 00', () => {
+        var second = new Second('00');
+        expect(second.convertSeconds()).to.equal('Y');
+    });
+    it('should return valid second when input is 01', () => {
+        var second = new Second('1');
+        expect(second.convertSeconds()).to.equal('O');
+    });
 });
