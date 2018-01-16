@@ -11,7 +11,7 @@ class Minute {
         '\n' + 'Y'.repeat(secondLine) + 'O'.repeat(4 - secondLine);
         for (let i = 1; i < quarter + 1; i += 1) {
             const index = i * 3 - 1;
-            result = result.substr(0,index) + 'R' + result.substr(index+1);
+            result = result.substr(0, index) + 'R' + result.substr(index + 1);
         }
         return result
     }

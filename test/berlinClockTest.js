@@ -7,14 +7,14 @@ const Minute = require('../app/minute');
 const Second = require('../app/second');
 
 describe('BerlinClock Kata Test: \n', () => {
-    var saveHour, saveMinute, saveSecond;
+    let saveHour, saveMinute, saveSecond;
     afterEach(function() {
         saveHour.restore();
         saveMinute.restore();
         saveSecond.restore();
     });
     it('should return valid clock when input is 00:00:00 - use minute/second/hour mock', () => {
-        var berlinClock = new BerlinClock('00:00:00');
+        let berlinClock = new BerlinClock('00:00:00');
         saveSecond = sinon.stub(Second.prototype, 'convertSeconds').callsFake(() => {
             return 'Y'
         })
@@ -27,7 +27,7 @@ describe('BerlinClock Kata Test: \n', () => {
         expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
     });
     it('should return valid clock when input is  13:17:01 - use minute/second/hour mock', () => {
-        var berlinClock = new BerlinClock('13:17:01');
+        let berlinClock = new BerlinClock('13:17:01');
         sinon.stub(Second.prototype, 'convertSeconds').callsFake(() => {
             return 'O'
         })
@@ -40,78 +40,28 @@ describe('BerlinClock Kata Test: \n', () => {
         expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
         );
     });
-    it('should return valid clock when input is 00:00:00 - use minute/hour mock', () => {
-        var berlinClock = new BerlinClock('00:00:00');
-        saveMinute = sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
-            return 'OOOOOOOOOOO\nOOOO'
-        })
-        saveHour = sinon.stub(Hour.prototype, 'convertHours').callsFake(() => {
-            return 'OOOO\nOOOO'
-        })
-        expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
-    });
-    it('should return valid clock when input is  13:17:01 - use minute/hour mock', () => {
-        var berlinClock = new BerlinClock('13:17:01');
-        sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
-            return 'YYROOOOOOOO\nYYOO'
-        })
-        sinon.stub(Hour.prototype, 'convertHours').callsFake(() => {
-            return 'RROO\nRRRO'
-        })
-        expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
-        );
-    });
-    it('should return valid clock when input is 00:00:00 - use minute mock', () => {
-        var berlinClock = new BerlinClock('00:00:00');
-        saveMinute = sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
-            return 'OOOOOOOOOOO\nOOOO'
-        })
-        expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
-    }); 
-    it('should return valid clock when input is  13:17:01 - use minute mock', () => {
-        var berlinClock = new BerlinClock('13:17:01');
-        sinon.stub(Minute.prototype, 'convertMinutes').callsFake(() => {
-            return 'YYROOOOOOOO\nYYOO'
-        })
-        expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
-        );
-    });
-    it('should return valid clock when input is 00:00:00', () => {
-        var berlinClock = new BerlinClock('00:00:00');
-        expect(berlinClock.convertClock()).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
-    });
-    it('should return valid clock when input is 13:17:01', () => {
-        var berlinClock = new BerlinClock('13:17:01');
-        expect(berlinClock.convertClock()).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
-        );
-    });
-    it('should return valid clock when input is 23:59:59', () => {
-        var berlinClock = new BerlinClock('23:59:59');
-        expect(berlinClock.convertClock()).to.equal('O\nRRRR\nRRRO\nYYRYYRYYRYY\nYYYY'
-        );
-    });
     it('should return valid second when input is 00', () => {
-        var second = new Second('00');
+        let second = new Second('00');
         expect(second.convertSeconds()).to.equal('Y');
     });
     it('should return valid second when input is 01', () => {
-        var second = new Second('1');
+        let second = new Second('1');
         expect(second.convertSeconds()).to.equal('O');
     });
     it('should return valid hour when input is 00', () => {
-        var hour = new Hour('00');
+        let hour = new Hour('00');
         expect(hour.convertHours()).to.equal('OOOO\nOOOO');
     });
     it('should return valid hour when input is 01', () => {
-        var hour = new Hour('13');
+        let hour = new Hour('13');
         expect(hour.convertHours()).to.equal('RROO\nRRRO');
     });
     it('should return valid minute when input is 00', () => {
-        var minute = new Minute('00');
+        let minute = new Minute('00');
         expect(minute.convertMinutes()).to.equal('OOOOOOOOOOO\nOOOO');
     });
     it('should return valid minute when input is 17', () => {
-        var minute = new Minute('17');
+        let minute = new Minute('17');
         expect(minute.convertMinutes()).to.equal('YYROOOOOOOO\nYYOO');
     });
 });

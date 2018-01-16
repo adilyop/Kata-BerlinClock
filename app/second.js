@@ -4,9 +4,7 @@ class Second {
     }
 
      convertSeconds() {
-        if (this.time % 2 === 0)
-            return 'Y';
-        return 'O';
+        return (this.time % 2 === 0) ? 'Y' : 'O';
     }
 }
 

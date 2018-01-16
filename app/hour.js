@@ -1,5 +1,3 @@
-
-
 class Hour {
     constructor(time) {
         this.time = time;
