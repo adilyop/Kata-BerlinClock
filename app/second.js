@@ -4,7 +4,10 @@ class Second {
     }
 
      convertSeconds() {
-        return this.time;
+        console.log("call sec")
+        if (this.time % 2 === 0)
+            return 'Y';
+        return 'O';
     }
 }
 
