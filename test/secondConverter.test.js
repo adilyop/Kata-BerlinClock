@@ -16,7 +16,7 @@ describe('second converter Test: \n', () => {
     it("should throw if time is invalid", function () {
         let secondConverter = new SecondConverter('invalid');
         expect(function () {
-            secondConverter.convertSeconds()
+            secondConverter.convertSeconds();
         }).to.throw(Error);
     });
 });

@@ -17,8 +17,8 @@ class MinuteConverter {
             const indexRedLamp = i * 3 - 1;
             resultFirstLine = resultFirstLine.substr(0, indexRedLamp) + 'R' + resultFirstLine.substr(indexRedLamp + 1);
         }
-        const result = [resultFirstLine, resultSecondLine]
-        return result
+        const result = [resultFirstLine, resultSecondLine];
+        return result;
     }
 }
 

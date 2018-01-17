@@ -17,13 +17,13 @@ describe('BerlinClock Kata Test: \n', () => {
     });
     it('should return valid clock when input is 00:00:00 - use minute/second/hour mock', () => {
         saveSecond = sinon.stub(SecondConverter.prototype, 'convertSeconds').callsFake(() => {
-            return ['Y']
+            return ['Y'];
         })
         saveMinute = sinon.stub(MinuteConverter.prototype, 'convertMinutes').callsFake(() => {
-            return ['OOOOOOOOOOO', 'OOOO']
+            return ['OOOOOOOOOOO', 'OOOO'];
         })
         saveHour = sinon.stub(HourConverter.prototype, 'convertHours').callsFake(() => {
-            return ['OOOO', 'OOOO']
+            return ['OOOO', 'OOOO'];
         })
         const result = berlinClock.convertClock('00:00:00');
         expect(result[0]).to.equal('Y');
@@ -34,13 +34,13 @@ describe('BerlinClock Kata Test: \n', () => {
     });
     it('should return valid clock when input is 13:17:01 - use minute/second/hour mock', () => {
         sinon.stub(SecondConverter.prototype, 'convertSeconds').callsFake(() => {
-            return ['O']
+            return ['O'];
         })
         sinon.stub(MinuteConverter.prototype, 'convertMinutes').callsFake(() => {
-            return ['YYROOOOOOOO', 'YYOO']
+            return ['YYROOOOOOOO', 'YYOO'];
         })
         sinon.stub(HourConverter.prototype, 'convertHours').callsFake(() => {
-            return ['RROO', 'RRRO']
+            return ['RROO', 'RRRO'];
         })
         const result = berlinClock.convertClock('13:17:01');
         expect(result[0]).to.equal('O');
@@ -51,7 +51,7 @@ describe('BerlinClock Kata Test: \n', () => {
     });
     it("should throw if time is invalid", function () {
         expect(function () {
-            berlinClock.convertClock('invalid time')
+            berlinClock.convertClock('invalid time');
         }).to.throw(Error);
     });
 });

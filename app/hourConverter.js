@@ -13,7 +13,7 @@ class HourConverter {
         let oneHourLine = this.time % 5;
         const resultFirstLine = 'R'.repeat(fiveHourLine) + 'O'.repeat(4 - fiveHourLine);
         const resultSecondLine = 'R'.repeat(oneHourLine) + 'O'.repeat(4 - oneHourLine);
-        return [resultFirstLine, resultSecondLine]
+        return [resultFirstLine, resultSecondLine];
     }
 }
 

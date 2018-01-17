@@ -9,7 +9,7 @@ class SecondConverter {
             throw new Error("invalid second format");
         }
         const result = (this.time % 2 === 0) ? 'Y' : 'O';
-        return [result]
+        return [result];
     }
 }
 

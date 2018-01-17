@@ -18,7 +18,7 @@ describe('hour converter Test: \n', () => {
     it("should throw if time is invalid", function () {
         let hourConverter = new HourConverter('invalid');
         expect(function () {
-            hourConverter.convertHours()
+            hourConverter.convertHours();
         }).to.throw(Error);
     });
 });

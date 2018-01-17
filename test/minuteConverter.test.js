@@ -18,7 +18,7 @@ describe('minute converter Test: \n', () => {
     it("should throw if time is invalid", function () {
         let minuteConverter = new MinuteConverter('invalid');
         expect(function () {
-            minuteConverter.convertMinutes()
+            minuteConverter.convertMinutes();
         }).to.throw(Error);
     });
 });
