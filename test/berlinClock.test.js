@@ -24,9 +24,14 @@ describe('BerlinClock Kata Test: \n', () => {
         saveHour = sinon.stub(HourConverter.prototype, 'convertHours').callsFake(() => {
             return ['OOOO', 'OOOO']
         })
-        expect(berlinClock.convertClock('00:00:00')).to.equal('Y\nOOOO\nOOOO\nOOOOOOOOOOO\nOOOO');
+        const result = berlinClock.convertClock('00:00:00');
+        expect(result[0]).to.equal('Y');
+        expect(result[1]).to.equal('OOOO');
+        expect(result[2]).to.equal('OOOO');
+        expect(result[3]).to.equal('OOOOOOOOOOO');
+        expect(result[4]).to.equal('OOOO');
     });
-    it('should return valid clock when input is  13:17:01 - use minute/second/hour mock', () => {
+    it('should return valid clock when input is 13:17:01 - use minute/second/hour mock', () => {
         let berlinClock = new BerlinClock();
         sinon.stub(SecondConverter.prototype, 'convertSeconds').callsFake(() => {
             return ['O']
@@ -37,8 +42,12 @@ describe('BerlinClock Kata Test: \n', () => {
         sinon.stub(HourConverter.prototype, 'convertHours').callsFake(() => {
             return ['RROO', 'RRRO']
         })
-        expect(berlinClock.convertClock('00:00:00')).to.equal('O\nRROO\nRRRO\nYYROOOOOOOO\nYYOO'
-        );
+        const result = berlinClock.convertClock('13:17:01');
+        expect(result[0]).to.equal('O');
+        expect(result[1]).to.equal('RROO');
+        expect(result[2]).to.equal('RRRO');
+        expect(result[3]).to.equal('YYROOOOOOOO');
+        expect(result[4]).to.equal('YYOO');
     });
     it('should return invalid time when input is not a time', () => {
         let berlinClock = new BerlinClock();
