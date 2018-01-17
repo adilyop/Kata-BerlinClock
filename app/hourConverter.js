@@ -6,8 +6,8 @@ class HourConverter {
 
     convertHours() {
         var regex = new RegExp('([0-1][0-9]|2[0-3])');
-        if (!regex.test(this.time)) { 
-            return 'invalid hour format' 
+        if (!regex.test(this.time)) {
+            throw new Error("invalid hour format");
         }
         let fiveHourLine = Math.floor(this.time / 5);
         let oneHourLine = this.time % 5;

@@ -7,7 +7,7 @@ class berlinClock {
     convertClock(clock) {
         var regex = new RegExp('([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])');
         if (!regex.test(clock)) {
-            return 'invalid time format';
+            throw new Error("invalid time format");
         }
         let clockTab = clock.split(':');
         let hourConverter = new HourConverter(clockTab[0]);

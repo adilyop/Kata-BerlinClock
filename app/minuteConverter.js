@@ -5,8 +5,8 @@ class MinuteConverter {
 
     convertMinutes() {
         var regex = new RegExp('([0-5][0-9])');
-        if (!regex.test(this.time)) { 
-            return 'invalid minute format' 
+        if (!regex.test(this.time)) {
+            throw new Error("invalid minute format");
         }
         let fiveMinuteLine = Math.floor(this.time / 5);
         let oneMinuteLine = this.time % 5;

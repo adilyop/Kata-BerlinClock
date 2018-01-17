@@ -1,6 +1,7 @@
 const chai = require('chai');
 const sinon = require('sinon')
 const expect = chai.expect;
+const assert = chai.assert;
 const BerlinClock = require('../app/berlinClock');
 const HourConverter = require('../app/hourConverter');
 const MinuteConverter = require('../app/minuteConverter');
@@ -8,13 +9,13 @@ const SecondConverter = require('../app/secondConverter');
 
 describe('BerlinClock Kata Test: \n', () => {
     let saveHour, saveMinute, saveSecond;
+    let berlinClock = new BerlinClock();
     afterEach(function () {
         saveHour.restore();
         saveMinute.restore();
         saveSecond.restore();
     });
     it('should return valid clock when input is 00:00:00 - use minute/second/hour mock', () => {
-        let berlinClock = new BerlinClock();
         saveSecond = sinon.stub(SecondConverter.prototype, 'convertSeconds').callsFake(() => {
             return ['Y']
         })
@@ -32,7 +33,6 @@ describe('BerlinClock Kata Test: \n', () => {
         expect(result[4]).to.equal('OOOO');
     });
     it('should return valid clock when input is 13:17:01 - use minute/second/hour mock', () => {
-        let berlinClock = new BerlinClock();
         sinon.stub(SecondConverter.prototype, 'convertSeconds').callsFake(() => {
             return ['O']
         })
@@ -49,18 +49,9 @@ describe('BerlinClock Kata Test: \n', () => {
         expect(result[3]).to.equal('YYROOOOOOOO');
         expect(result[4]).to.equal('YYOO');
     });
-    it('should return invalid time when input is not a time', () => {
-        let berlinClock = new BerlinClock();
-        sinon.stub(SecondConverter.prototype, 'convertSeconds').callsFake(() => {
-            return ['O']
-        })
-        sinon.stub(MinuteConverter.prototype, 'convertMinutes').callsFake(() => {
-            return ['YYROOOOOOOO', 'YYOO']
-        })
-        sinon.stub(HourConverter.prototype, 'convertHours').callsFake(() => {
-            return ['RROO', 'RRRO']
-        })
-        expect(berlinClock.convertClock('invalid time')).to.equal('invalid time format'
-        );
+    it("should throw if time is invalid", function () {
+        expect(function () {
+            berlinClock.convertClock('invalid time')
+        }).to.throw(Error);
     });
 });

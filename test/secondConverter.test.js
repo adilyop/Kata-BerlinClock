@@ -13,9 +13,10 @@ describe('second converter Test: \n', () => {
         const result = secondConverter.convertSeconds()
         expect(result[0]).to.equal('O');
     });
-    it('should return error when input is invalid', () => {
+    it("should throw if time is invalid", function () {
         let secondConverter = new SecondConverter('invalid');
-        const result = secondConverter.convertSeconds()
-        expect(result).to.equal('invalid second format');
+        expect(function () {
+            secondConverter.convertSeconds()
+        }).to.throw(Error);
     });
 });
